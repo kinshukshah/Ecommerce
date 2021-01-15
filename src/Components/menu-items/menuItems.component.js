@@ -2,12 +2,12 @@ import React from "react";
 import "./menuItems.styles.scss";
 import { withRouter } from "react-router";
 
-const MenuItems = ({ title, size, imageUrl, linkUrl, history }) => {
+const MenuItems = ({ title, size, imageUrl, linkUrl, history,match }) => {
   return (
     <div
       className={`menu-item ${size}`}
       onClick={() => {
-        history.push(`/${linkUrl}`);
+        history.push(`${match.url}${linkUrl}`);
       }}
     >
       <div
