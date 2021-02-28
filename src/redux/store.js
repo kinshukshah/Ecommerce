@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
+import { createStore, applyMiddleware } from "redux";
+import logger from "redux-logger";
 
-import rootreducer from './root-reducer';
+import { persistStore } from "redux-persist";
 
-const middlewares=[logger];
+import rootreducer from "./root-reducer";
 
-const store=createStore(rootreducer,applyMiddleware(...middlewares));
+const middlewares = [logger];
 
-export default store;
-
-
-
+export const store = createStore(rootreducer, applyMiddleware(...middlewares));
+export const persistor = persistStore(store);
+// eslint-disable-next-line import/no-anonymous-default-export
+export default { store, persistor };
